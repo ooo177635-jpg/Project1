@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 100%;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tree-container {
+    position: relative;
+    height: 600px;
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* Tree trunk */
+.trunk {
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    height: 150px;
+    background: linear-gradient(90deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+    border-radius: 10px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* Canopy container */
+.canopy {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Branch clusters */
+.branch-cluster {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.left-cluster {
+    top: 20px;
+    left: 20px;
+    flex-direction: column;
+}
+
+.center-cluster {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column;
+    gap: 40px;
+}
+
+.right-cluster {
+    top: 20px;
+    right: 20px;
+    flex-direction: column;
+}
+
+/* Apple styling */
+.apple {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+.apple:hover {
+    transform: scale(1.2);
+}
+
+.apple-body {
+    width: 70px;
+    height: 70px;
+    background: radial-gradient(circle at 30% 30%, #FF6B6B, #DD2222);
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.2),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.3);
+    border: 2px solid #CC1111;
+}
+
+.apple-stem {
+    position: absolute;
+    width: 4px;
+    height: 15px;
+    background: linear-gradient(90deg, #654321, #8B6914);
+    border-radius: 2px;
+    top: -8px;
+    z-index: 2;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.apple-leaf {
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    background: #2ecc71;
+    border-radius: 50% 0 50% 50%;
+    top: -12px;
+    right: -10px;
+    transform: rotate(-45deg);
+    z-index: 3;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Tooltip on hover */
+.apple::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+}
+
+.apple:hover::after {
+    opacity: 1;
+}
+
+.instructions {
+    color: #666;
+    font-size: 14px;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .tree-container {
+        height: 400px;
+    }
+    
+    .canopy {
+        height: 350px;
+    }
+    
+    .branch-cluster {
+        gap: 20px;
+    }
+    
+    .apple {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .apple-body {
+        width: 55px;
+        height: 55px;
+    }
+}
